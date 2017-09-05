@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from 'react-dom';
-import {Tabs} from './Tabs';
+import { shallow } from 'enzyme';
+import { Tabs } from './Tabs';
 
 const tabObj= [
   {"key": "1", "label": "tab1", "actionItems": "2", selected:true},
@@ -9,13 +9,7 @@ const tabObj= [
   {"key": "4", "label": "tab4", "actionItems": "4", selected:false}
 ];
 
-
-class App extends React.Component {
-  render() {
-    return (
-      <Tabs items={tabObj}/>
-    );
-  }
-}
-
-render(<App/>, document.getElementById('root'))
+test('Tabs renders correctly', () => {
+  const component = shallow(<Tabs items={tabObj}/>);
+  expect(component).toMatchSnapshot();
+})
