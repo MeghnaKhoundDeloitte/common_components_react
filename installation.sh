@@ -32,3 +32,5 @@ tput setaf 2; echo "Node installed on your machine";
 echo "Node version installed:" `node -v `;
 
 tput setaf 7;
+
+
