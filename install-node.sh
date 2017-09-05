@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # remove previous instance of node versions
 tput setaf 1; echo "Removing your older version of node";
 tput setaf 7;
@@ -11,7 +13,7 @@ tput setaf 7;
 touch /etc/apt/sources.list.d/nodesource.list
 
 ## Writign the debian node source to nodesource.list
-cat "deb https://deb.nodesource.com/node_6.x xenial main deb-src https://deb.nodesource.com/node_6.x xenial main" >> /etc/apt/sources.list.d/nodesource.list
+echo "deb https://deb.nodesource.com/node_6.x xenial main deb-src https://deb.nodesource.com/node_6.x xenial main" > /etc/apt/sources.list.d/nodesource.list
 
 echo "Downloading nodesource debian GPG signing key";
 ## Downloading nodesource GPG signing key
@@ -30,7 +32,24 @@ sudo apt-get install -y --force-yes nodejs
 
 tput setaf 2; echo "Node installed on your machine";
 echo "Node version installed:" `node -v `;
+echo "npm version installed:" `npm -v`;
 
 tput setaf 7;
 
+tput setaf 2; echo "Setting up npm prefix";
+tput setaf 7;
+
+## npm config preparation
+rm -rf ~/.npm-global
+mkdir ~/.npm-global;
+npm config set prefix ~/.npm-global;
+echo "export PATH='/home/deloitte/.npm-global/bin:$PATH'" >> ~/.profile;
+
+## sourcing profile
+source ~/.profile;
+
+tput setaf 2; echo "npm prefix configuration done.";
+echo "You are ready to rock";
+
+tput setaf 7;
 
