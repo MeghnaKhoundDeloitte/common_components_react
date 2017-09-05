@@ -3,7 +3,7 @@
 # remove previous instance of node versions
 tput setaf 1; echo "Removing your older version of node";
 tput setaf 7;
-sudo apt-get purge --remove -y nodejs npm
+sudo apt-get purge --remove -y nodejs npm node
 
 tput setaf 2; echo "Older version of node removed";
 
